@@ -9,7 +9,7 @@
 
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-6"><p>Newsletter</p></div>
+                        <div class="col-md-6"><p><strong>Assigned Newsletter(s):</strong></p></div>
                         <div class="col-md-6"><p>Unsubscribe</p></div>
                     </div>
                     
@@ -18,6 +18,7 @@
                         <div class="col-md-6">{{ $newsletter->newsletter }}</div>
                         <div class="col-md-6"><a href='/home/{{$newsletter->id}}/{{Auth::user()->id}}/unsubscribe'><button class='btn btn-danger'>Unsubscribe</button></a></div>
                     </div>
+                    <br/>
                     @endforeach
                     
                     <div class="row">

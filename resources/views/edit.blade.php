@@ -36,11 +36,11 @@
                         </div>
                             
                         <div class="form-group">
-                            <label for="roles" class="col-md-4 control-label">Newsletters</label>
+                            <label for="newsletters" class="col-md-4 control-label">Newsletters</label>
 
                             <div class="checkbox">
                                 @foreach($newsletters as $newsletter)
-                                <label><input id="role" type="checkbox" name="roles[]" value="{{$newsletter->id}}" @if($user->hasNewsletters($newsletter->newsletter)) checked @endif>{{$newsletter->newsletter}}</label>
+                                <label><input id="newsletters" type="checkbox" name="newsletters[]" value="{{$newsletter->id}}" @if($user->hasNewsletters($newsletter->newsletter)) checked @endif>{{$newsletter->newsletter}}</label>
                                 @endforeach
                             </div>
                         </div>
@@ -53,7 +53,15 @@
                             </div>
                         </div>
                     </form>
-                    <a href="/home"><button class="btn btn-primary">Go Back</button></a>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a href="/home"><button class="btn btn-primary">Go Back</button></a>
+                        </div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <a href="/home/{{$user->id}}/delete"><button class="btn btn-danger">Delete your account</button></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div> 

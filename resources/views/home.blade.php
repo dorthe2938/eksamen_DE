@@ -19,6 +19,11 @@
                         <div class="col-md-6"><a href='/home/{{$newsletter->id}}/{{Auth::user()->id}}/unsubscribe'><button class='btn btn-danger'>Unsubscribe</button></a></div>
                     </div>
                     @endforeach
+                    
+                    <div class="row">
+                        <div class="col-md-9"></div>
+                        <div class="col-md-3"><a href="/home/{{Auth::user()->id}}/edit"><button class="btn btn-success">User settings</button></a></div>
+                    </div>
                 </div>
             </div>
         </div> 

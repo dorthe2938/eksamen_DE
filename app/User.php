@@ -31,4 +31,13 @@ class User extends Authenticatable
     public function newsletters() {
         return $this->belongsToMany('App\Newsletter');
     }
+    
+    public function hasNewsletters($newsletterName) {
+        foreach ($this->newsletters as $newsletters) {
+            if ($newsletters->newsletter == $newsletterName) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

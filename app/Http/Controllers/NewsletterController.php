@@ -12,7 +12,7 @@ class NewsletterController extends Controller
 {
     
     
-    public function unsubscribe($user, Newsletter $newsletter) {
+    public function unsubscribe(Newsletter $newsletter, User $user) {
         $user->newsletters()->detach($newsletter);
         
         return redirect('home');

@@ -9,21 +9,35 @@
 
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-6"><p><strong>Assigned Newsletter(s):</strong></p></div>
-                        <div class="col-md-6"><p>Unsubscribe</p></div>
+                        <div class="col-md-6"><p><strong>Subscribed Newsletter(s):</strong></p></div>
+                        <div class="col-md-6"><p><strong>Unsubscribe your newsletter(s):</strong></p></div>
                     </div>
                     
-                    @foreach(Auth::user()->newsletters as $newsletter)
+                    @if(count(Auth::user()->newsletters) > 1)
+                        @foreach(Auth::user()->newsletters as $newsletter)
+                        <div class="row">
+                            <div class="col-md-6">{{ $newsletter->newsletter }}</div>
+                            <div class="col-md-6">
+                                <a href='/home/{{$newsletter->id}}/{{Auth::user()->id}}/unsubscribe'><button class='btn btn-danger'>Unsubscribe</button></a>
+                            </div>
+                        </div>
+                        <br/>
+                        @endforeach
+                    @else
+                        @foreach(Auth::user()->newsletters as $newsletter)
+                        <div class="row">
+                            <div class="col-md-6">{{ $newsletter->newsletter }}</div>
+                            <div class="col-md-6">
+                                <p>You must be assigned at least one Newsletter!</p>
+                            </div>
+                        </div>
+                        <br/>
+                        @endforeach
+                    @endif
                     <div class="row">
-                        <div class="col-md-6">{{ $newsletter->newsletter }}</div>
-                        <div class="col-md-6"><a href='/home/{{$newsletter->id}}/{{Auth::user()->id}}/unsubscribe'><button class='btn btn-danger'>Unsubscribe</button></a></div>
-                    </div>
-                    <br/>
-                    @endforeach
-                    
-                    <div class="row">
-                        <div class="col-md-9"></div>
-                        <div class="col-md-3"><a href="/home/{{Auth::user()->id}}/edit"><button class="btn btn-success">User settings</button></a></div>
+                        <div class="col-md-4"><a href="/home/{{Auth::user()->id}}/birthday"><button class="btn btn-primary">See list of upcomming birthdays</button></a></div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4"><a href="/home/{{Auth::user()->id}}/edit"><button class="btn btn-primary">User settings</button></a></div>
                     </div>
                 </div>
             </div>

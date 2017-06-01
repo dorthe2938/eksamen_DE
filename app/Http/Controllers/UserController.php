@@ -8,6 +8,7 @@ use App\Newsletter;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Carbon\Carbon;
 
 
 class UserController extends Controller
@@ -75,6 +76,8 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $user->newsletters()->detach();
+        
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->birthday = $request->input('birthday');
@@ -95,5 +98,15 @@ class UserController extends Controller
         $user->delete();
         
         return redirect('/');
+    }
+    
+    public function birthday(User $user) {
+        $birthday = Carbon::parse($user->birthday);
+        
+        $upcommingDays = collect(range(0, 50))->map(function ($addYears) use ($birthday) {
+            return Carbon::parse($birthday)->addYears($addYears)->format('Y, l');
+        });
+        
+        return view('birthday', compact(['upcommingDays', 'user']));
     }
 }

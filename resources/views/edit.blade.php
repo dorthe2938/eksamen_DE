@@ -53,13 +53,15 @@
                             </div>
                         </div>
                     </form>
+                    <br/>
                     <div class="row">
-                        <div class="col-md-4">
-                            <a href="/home"><button class="btn btn-primary">Go Back</button></a>
-                        </div>
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4">
-                            <a href="/home/{{$user->id}}/delete"><button class="btn btn-danger">Delete your account</button></a>
+                        <div class="col-md-offset-4">
+                            <div class="col-md-4">
+                                <a href="/home"><button class="btn btn-primary">Back to Home</button></a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="/home/{{$user->id}}/delete"><button class="btn btn-danger">Delete your account</button></a>
+                            </div>
                         </div>
                     </div>
                 </div>

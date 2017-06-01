@@ -23,3 +23,4 @@ Route::get('/home/{newsletter}/{user}/unsubscribe', 'NewsletterController@unsubs
 Route::get('/home/{user}/edit', 'UserController@edit');
 Route::post('/home/{user}', 'UserController@update');
 Route::get('/home/{user}/delete', 'UserController@destroy');
+Route::get('/home/{user}/birthday', 'UserController@birthday');
